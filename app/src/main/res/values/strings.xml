@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Maintainer</string>
+    <string name="vehicle_management">Vehicle Management</string>
+    <string name="maintenance_logging">Maintenance Logging</string>
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="edit_vehicle">Edit Vehicle</string>
+    <string name="add_maintenance">Add Maintenance</string>
+    <string name="edit_maintenance">Edit Maintenance</string>
+    <string name="scan_vin">Scan VIN</string>
+    <string name="capture_receipt">Capture Receipt</string>
+    <string name="backup_restore">Backup &amp; Restore</string>
+    <string name="settings">Settings</string>
+</resources>

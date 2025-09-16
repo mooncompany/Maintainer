@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(./gradlew:*)",
+      "Bash(gradlew.bat clean:*)",
+      "Bash(cat:*)",
+      "Bash(gradle:*)",
+      "Bash(find:*)",
+      "Bash(adb:*)",
+      "Bash(cmd /c:*)",
+      "Bash(java:*)",
+      "Bash(where java)",
+      "Bash(curl:*)",
+      "Bash(powershell:*)",
+      "Bash(where adb)",
+      "Bash(\"%ANDROID_HOME%\\platform-tools\\adb.exe\" devices)",
+      "Bash(dir)",
+      "Bash(dir build)",
+      "Bash(dir buildreports)",
+      "Bash(.gradlew assembleDebug)",
+      "Bash(dir \"C:\\Program Files\\Android\\Android Studio\\jbr\")",
+      "Bash(\"C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\java.exe\" -version)",
+      "Bash(.gradlew.bat clean assembleDebug)",
+      "Bash(.quick_build.bat)",
+      "Bash(set JAVA_HOME=C:Program FilesAndroidAndroid Studiojbr)",
+      "Bash(.gradlew.bat assembleDebug)",
+      "Bash(quick_build.bat)",
+      "Bash(git init:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
