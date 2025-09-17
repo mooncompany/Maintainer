@@ -6,6 +6,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import android.content.Context
 import com.maintainer.app.data.database.converter.DateConverter
+import com.maintainer.app.data.database.converter.PowertrainTypeConverter
 import com.maintainer.app.data.database.dao.MaintenanceRecordDao
 import com.maintainer.app.data.database.dao.MaintenanceScheduleDao
 import com.maintainer.app.data.database.dao.VehicleDao
@@ -19,10 +20,10 @@ import com.maintainer.app.data.database.entity.Vehicle
         MaintenanceRecord::class,
         MaintenanceSchedule::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = true
 )
-@TypeConverters(DateConverter::class)
+@TypeConverters(DateConverter::class, PowertrainTypeConverter::class)
 abstract class MaintainerDatabase : RoomDatabase() {
 
     abstract fun vehicleDao(): VehicleDao

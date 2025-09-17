@@ -1,6 +1,7 @@
 package com.maintainer.app.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -8,22 +9,26 @@ import androidx.navigation.navArgument
 import androidx.navigation.NavType
 import com.maintainer.app.ui.vehicles.VehicleListScreen
 import com.maintainer.app.ui.vehicles.AddEditVehicleScreen
+import com.maintainer.app.ui.vehicles.VehicleProfileScreen
 import com.maintainer.app.ui.maintenance.MaintenanceListScreen
 import com.maintainer.app.ui.maintenance.AddEditMaintenanceScreen
-import com.maintainer.app.ui.home.HomeScreen
+import com.maintainer.app.ui.garage.GarageScreen
 import com.maintainer.app.ui.settings.SettingsScreen
+import com.maintainer.app.ui.analytics.AnalyticsScreen
 
 @Composable
 fun MaintainerNavHost(
     navController: NavHostController,
-    startDestination: String = "home"
+    modifier: Modifier = Modifier,
+    startDestination: String = "garage"
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination,
+        modifier = modifier
     ) {
-        composable("home") {
-            HomeScreen(
+        composable("garage") {
+            GarageScreen(
                 onNavigateToVehicles = { navController.navigate("vehicles") },
                 onNavigateToMaintenance = { vehicleId ->
                     navController.navigate("maintenance/$vehicleId")
@@ -31,7 +36,11 @@ fun MaintainerNavHost(
                 onNavigateToEditVehicle = { vehicleId ->
                     navController.navigate("vehicles/edit/$vehicleId")
                 },
-                onNavigateToSettings = { navController.navigate("settings") }
+                onNavigateToVehicleProfile = { vehicleId ->
+                    navController.navigate("vehicles/profile/$vehicleId")
+                },
+                onNavigateToSettings = { navController.navigate("settings") },
+                onNavigateToAnalytics = { navController.navigate("analytics") }
             )
         }
 
@@ -64,6 +73,19 @@ fun MaintainerNavHost(
                 vehicleId = vehicleId,
                 onNavigateBack = { navController.popBackStack() },
                 onVehicleSaved = { navController.popBackStack() }
+            )
+        }
+
+        composable(
+            "vehicles/profile/{vehicleId}",
+            arguments = listOf(navArgument("vehicleId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val vehicleId = backStackEntry.arguments?.getString("vehicleId") ?: ""
+            VehicleProfileScreen(
+                vehicleId = vehicleId,
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToEdit = { navController.navigate("vehicles/edit/$vehicleId") },
+                onNavigateToMaintenance = { navController.navigate("maintenance/$vehicleId") }
             )
         }
 
@@ -115,6 +137,12 @@ fun MaintainerNavHost(
 
         composable("settings") {
             SettingsScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+
+        composable("analytics") {
+            AnalyticsScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }

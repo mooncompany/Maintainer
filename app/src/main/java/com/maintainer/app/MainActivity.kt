@@ -11,10 +11,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.maintainer.app.ui.navigation.MaintainerNavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.maintainer.app.ui.theme.MaintainerTheme
+import com.maintainer.app.ui.navigation.MaintainerNavHost
+import com.maintainer.app.ui.navigation.FluidBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,12 +27,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MaintainerTheme {
-                Surface(
+                val navController = rememberNavController()
+
+                Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    val navController = rememberNavController()
-                    MaintainerNavHost(navController = navController)
+                    bottomBar = {
+                        FluidBottomNavigation(navController = navController)
+                    },
+                    containerColor = MaterialTheme.colorScheme.background
+                ) { paddingValues ->
+                    MaintainerNavHost(
+                        navController = navController,
+                        modifier = Modifier.padding(paddingValues)
+                    )
                 }
             }
         }

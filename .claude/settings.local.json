@@ -26,7 +26,8 @@
       "Bash(set JAVA_HOME=C:Program FilesAndroidAndroid Studiojbr)",
       "Bash(.gradlew.bat assembleDebug)",
       "Bash(quick_build.bat)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

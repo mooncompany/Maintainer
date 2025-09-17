@@ -4,6 +4,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
 
+enum class PowertrainType {
+    GAS,
+    DIESEL,
+    HYBRID,
+    ELECTRIC,
+    HYDROGEN
+}
+
 @Entity(tableName = "vehicles")
 data class Vehicle(
     @PrimaryKey
@@ -21,6 +29,11 @@ data class Vehicle(
     val fuelType: String? = null,
     val transmission: String? = null,
     val photoPath: String? = null,
+    val registrationMonth: Int? = null,
+    val registrationYear: Int? = null,
+    val powertrainType: PowertrainType = PowertrainType.GAS,
+    val photos: String? = null,
+    val mainProfilePhotoIndex: Int = 0,
     val createdAt: Date = Date(),
     val updatedAt: Date = Date(),
     val isActive: Boolean = true

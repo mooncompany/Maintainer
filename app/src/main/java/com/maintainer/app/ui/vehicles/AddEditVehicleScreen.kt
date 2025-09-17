@@ -31,6 +31,14 @@ import androidx.core.content.FileProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.maintainer.app.data.database.entity.Vehicle
+import com.maintainer.app.data.database.entity.PowertrainType
+import com.maintainer.app.ui.components.PhotoPickerSection
+import com.maintainer.app.data.photo.PhotoManager
+import com.maintainer.app.data.photo.VehiclePhotoUtils
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material.icons.filled.ArrowDropDown
+import android.graphics.Bitmap
 import java.io.File
 import java.util.*
 
